@@ -32,9 +32,9 @@ function Navigate() {
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-lg-center gap-lg-2 my-2 my-lg-0">
-            <Nav.Link href="/home" className="text-dark fw-medium px-3 rounded-pill hover-pill">Home</Nav.Link>
-            <Nav.Link href="#projects" className="text-dark fw-medium px-3 rounded-pill hover-pill">Projects</Nav.Link>
-            <Nav.Link href="#reviews" className="text-dark fw-medium px-3 rounded-pill hover-pill">Reviews</Nav.Link>
+            <Nav.Link href="/" className="text-dark fw-medium px-3 rounded-pill hover-pill">Home</Nav.Link>
+            <Nav.Link href="/projects" className="text-dark fw-medium px-3 rounded-pill hover-pill">Projects</Nav.Link>
+            <Nav.Link href="/reviews" className="text-dark fw-medium px-3 rounded-pill hover-pill">Reviews</Nav.Link>
             
             {/* Gen-Z Vibrant CTA Button */}
             <Button 
