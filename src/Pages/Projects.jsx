@@ -175,7 +175,7 @@ function Projects() {
 
       <div className="bg-light min-vh-100" style={{ 
         marginTop: '-100px',
-        paddingTop: '6rem',
+        paddingTop: '8rem',
         paddingBottom: '40px' 
       }}>
         <Container>
