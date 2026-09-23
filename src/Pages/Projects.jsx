@@ -133,7 +133,11 @@ function Projects() {
         }
       `}</style>
 
-      <div className="bg-light min-vh-100" style={{ paddingTop: '110px', paddingBottom: '60px' }}>
+      <div className="bg-light min-vh-100" style={{ 
+        marginTop: '-100px',
+        paddingTop: '6rem',
+        paddingBottom: '40px' 
+      }}>
         <Container>
           {/* TOP SECTION: INSTAGRAM REELS SHOWCASE */}
           <section className="mb-5 pb-4 border-bottom">
