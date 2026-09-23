@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { motion } from 'framer-motion';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
