@@ -18,43 +18,51 @@ function Projects() {
     return () => window.removeEventListener('error', handleGlobalError);
   }, []);
 
-  // Instagram Embed loading
+  // Instagram Embed SDK initialization
   useEffect(() => {
-    if (window.instgrm) {
-      try {
-        window.instgrm.Embeds.process();
-      } catch (e) {
-        // silent catch
+    const loadInstagramEmbeds = () => {
+      if (window.instgrm) {
+        try {
+          window.instgrm.Embeds.process();
+        } catch (e) {
+          // silent catch
+        }
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        script.onload = () => {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        };
+        document.body.appendChild(script);
       }
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://www.instagram.com/embed.js';
-      script.async = true;
-      script.crossOrigin = 'anonymous';
-      document.body.appendChild(script);
-    }
+    };
+
+    loadInstagramEmbeds();
   }, []);
 
   const instagramReels = [
     {
       id: 1,
       title: 'A space designed for devotion 🙏',
-      embedUrl: 'https://www.instagram.com/reel/DdjaR1MNV4J/embed/'
+      permalink: 'https://www.instagram.com/reel/DdjaR1MNV4J/'
     },
     {
       id: 2,
       title: 'Luxury Villa Master Bedroom 🛏️',
-      embedUrl: 'https://www.instagram.com/reel/DdY_2xVOc94/embed/'
+      permalink: 'https://www.instagram.com/reel/DdY_2xVOc94/'
     },
     {
       id: 3,
       title: 'Modern Modular Kitchen Process 🍳',
-      embedUrl: 'https://www.instagram.com/reel/Dc-V1CcN_2j/embed/'
+      permalink: 'https://www.instagram.com/reel/Dc-V1CcN_2j/'
     },
     {
       id: 4,
       title: 'Bespoke Lighting Design Details 💡',
-      embedUrl: 'https://www.instagram.com/reel/DXedZ6puzG9/embed/'
+      permalink: 'https://www.instagram.com/reel/DXedZ6puzG9/'
     }
   ];
 
@@ -87,14 +95,44 @@ function Projects() {
 
         .reel-card {
           flex: 0 0 300px;
-          height: 500px;
+          height: 530px;
           scroll-snap-align: start;
           border-radius: 18px;
           overflow: hidden;
-          background: #f8f9fa;
+          background: #000;
           position: relative;
-          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.12);
           border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Full scale video display & hiding external UI elements (like, share, comments) */
+        .instagram-wrapper {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .instagram-wrapper iframe {
+          width: 100% !important;
+          height: 118% !important;
+          margin-top: -8% !important;
+          border: none !important;
+          border-radius: 0 !important;
+          object-fit: cover !important;
+        }
+
+        .instagram-media {
+          margin: 0 !important;
+          padding: 0 !important;
+          border: none !important;
+          min-width: 100% !important;
+          max-width: 100% !important;
+          height: 100% !important;
+          background: #000 !important;
         }
 
         .gallery-card {
@@ -164,13 +202,18 @@ function Projects() {
             <div className="reels-scroll-container">
               {instagramReels.map((reel) => (
                 <div key={reel.id} className="reel-card">
-                  <iframe
-                    src={reel.embedUrl}
-                    className="w-100 h-100 border-0"
-                    scrolling="no"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    title={reel.title}
-                  ></iframe>
+                  <div className="instagram-wrapper">
+                    <blockquote
+                      className="instagram-media"
+                      data-instgrm-captioned={false}
+                      data-instgrm-permalink={reel.permalink}
+                      data-instgrm-version="14"
+                    >
+                      <a href={reel.permalink} target="_blank" rel="noreferrer" style={{ display: 'none' }}>
+                        {reel.title}
+                      </a>
+                    </blockquote>
+                  </div>
                 </div>
               ))}
             </div>
