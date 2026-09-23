@@ -181,9 +181,7 @@ function Projects() {
           <section className="mb-5 pb-4 border-bottom">
             <div className="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
               <div>
-                <Badge bg="dark" className="rounded-pill px-3 py-2 fw-normal text-white mb-2">
-                  📸 Social Showcase
-                </Badge>
+        
                 <h2 className="fw-bold text-dark fs-3 mb-0">Behind The Scenes on Instagram</h2>
               </div>
               <Button 
