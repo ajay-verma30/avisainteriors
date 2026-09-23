@@ -17,7 +17,7 @@ function Navigate() {
     >
       <Container fluid className="px-2">
         {/* Modern Brand Logo */}
-        <Navbar.Brand href="/home" className="fw-bold fs-4 tracking-tight text-dark d-flex align-items-center">
+        <Navbar.Brand href="/" className="fw-bold fs-4 tracking-tight text-dark d-flex align-items-center">
           <img
             alt="Logo"
             src="/Images/logo.png" 
