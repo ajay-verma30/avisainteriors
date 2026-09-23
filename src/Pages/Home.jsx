@@ -3,8 +3,50 @@ import { Button, Col, Container, Row, Badge } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 
 function Home() {
+  const services = [
+    {
+      id: '01',
+      title: 'Residential Design',
+      category: 'Living & Comfort',
+      description: 'Bespoke living rooms, modern kitchens, and serene bedroom interiors tailored to your personal aesthetic and lifestyle.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      )
+    },
+    {
+      id: '02',
+      title: 'Commercial Spaces',
+      category: 'Corporate & Retail',
+      description: 'Inspiring corporate offices, boutique retail outlets, and hospitality spaces designed to boost brand presence and productivity.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      )
+    },
+    {
+      id: '03',
+      title: '3D Architectural Planning',
+      category: 'Visualization & Layouts',
+      description: 'Photorealistic 3D renders, spatial layouts, and detailed material selection before any physical work begins.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+      )
+    }
+  ];
+
   return (
+    <>
     <section 
+    id='landing-section'
       className="bg-light min-vh-100 d-flex flex-column justify-content-center overflow-hidden" 
       style={{ 
         marginTop: '-100px',
@@ -15,7 +57,7 @@ function Home() {
       <Container>
         <Row className="align-items-center gy-4">
           {/* Left Column: Text Animations & Badges */}
-          <Col xs={12} md={7} lg={7} className="pe-lg-4">
+          <Col xs={12} md={8} lg={8} className="pe-lg-4">
             {/* Top Eyebrow Badge & Sub-label */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -93,7 +135,7 @@ function Home() {
           </Col>
 
           {/* Right Column: Image Showcase */}
-          <Col xs={12} md={5} lg={5}>
+          <Col xs={12} md={4} lg={4}>
             <motion.div 
               className="position-relative overflow-hidden rounded-4 shadow-lg"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -103,7 +145,7 @@ function Home() {
               <img 
                 src="Images/Image1.png"
                 alt="Minimalist Interior Showcase"
-                className="img-fluid w-100 object-fit-cover rounded-4"
+                className="img-fluid w-100 object-fit-stretch rounded-4"
                 style={{ maxHeight: '520px', minHeight: '350px' }}
               />
             </motion.div>
@@ -111,6 +153,73 @@ function Home() {
         </Row>
       </Container>
     </section>
+
+
+
+<section className="py-5 bg-white border-top">
+        <Container className="py-4">
+          {/* Section Header */}
+          <Row className="mb-5 text-center justify-content-center">
+            <Col lg={7} md={9}>
+              <Badge 
+                bg="light" 
+                text="primary" 
+                className="rounded-pill px-3 py-2 fw-semibold text-uppercase tracking-wider border mb-3"
+                style={{ fontSize: '0.75rem', letterSpacing: '1px' }}
+              >
+                What We Do
+              </Badge>
+              <h2 className="display-6 fw-bold text-dark tracking-tight mb-3">
+                Tailored Design Solutions for Every Space
+              </h2>
+              <p className="text-secondary fs-6 lh-relaxed mb-0">
+                From concept to execution, we blend aesthetic elegance with functional living to build inspirational environments.
+              </p>
+            </Col>
+          </Row>
+
+          {/* Feature Cards Grid */}
+          <Row className="g-4">
+            {services.map((service, index) => (
+              <Col key={service.id} xs={12} md={4}>
+                <motion.div
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="p-4 p-xl-5 rounded-4 h-100 service-card d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    {/* Top Row: Icon Badge & Subtle Step Number */}
+                    <div className="d-flex align-items-center justify-content-between mb-4">
+                      <div className="icon-box">
+                        {service.icon}
+                      </div>
+                      <span className="step-number">{service.id}</span>
+                    </div>
+
+                    {/* Category Label */}
+                    <span className="text-uppercase tracking-wider fw-semibold text-muted d-block mb-1" style={{ fontSize: '0.75rem', letterSpacing: '0.8px' }}>
+                      {service.category}
+                    </span>
+
+                    {/* Service Title */}
+                    <h3 className="fw-bold fs-4 text-dark mb-3">
+                      {service.title}
+                    </h3>
+
+                    {/* Service Description */}
+                    <p className="text-secondary fs-6 lh-relaxed mb-4">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+    </>
   );
 }
 

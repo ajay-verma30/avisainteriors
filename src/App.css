@@ -9,3 +9,62 @@
     padding-top: 80px; /* Small screens ke liye adjustment */
   }
 }
+
+.service-card {
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.06) !important;
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .service-card:hover {
+          border-color: rgba(13, 110, 253, 0.25) !important;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+          transform: translateY(-8px);
+        }
+
+        .icon-box {
+          width: 52px;
+          height: 52px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(13, 110, 253, 0.08) 0%, rgba(13, 110, 253, 0.02) 100%);
+          color: #0d6efd;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .service-card:hover .icon-box {
+          background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+          color: #ffffff;
+          box-shadow: 0 8px 18px rgba(13, 110, 253, 0.25);
+        }
+
+        .step-number {
+          font-family: var(--bs-font-sans-serif);
+          font-size: 2.2rem;
+          font-weight: 800;
+          color: rgba(0, 0, 0, 0.08);
+          letter-spacing: -1px;
+          transition: all 0.3s ease;
+        }
+
+        .service-card:hover .step-number {
+          color: rgba(13, 110, 253, 0.15);
+        }
+
+        .card-link {
+          font-size: 0.88rem;
+          font-weight: 600;
+          color: #0d6efd;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          transition: gap 0.2s ease;
+        }
+
+        .service-card:hover .card-link {
+          gap: 10px;
+        }

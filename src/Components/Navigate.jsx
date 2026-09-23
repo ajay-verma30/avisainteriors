@@ -16,9 +16,12 @@ function Navigate() {
         }
 
         /* Hover effect for links */
+        .hover-pill {
+          transition: all 0.2s ease-in-out;
+        }
+
         .hover-pill:hover {
           background-color: rgba(0, 0, 0, 0.05);
-          transition: all 0.2s ease-in-out;
         }
 
         /* Desktop Styles (Floating Pill Design) */
@@ -45,7 +48,7 @@ function Navigate() {
       >
         <Container fluid className="px-2">
           {/* Modern Brand Logo */}
-          <Navbar.Brand href="/" className="fw-bold fs-4 tracking-tight text-dark d-flex align-items-center">
+          <Navbar.Brand href="/" className="fw-bold fs-4 tracking-tight text-dark d-flex align-items-center my-0 py-0">
             <img
               alt="Logo"
               src="/Images/logo.png" 
@@ -59,16 +62,17 @@ function Navigate() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 shadow-none p-1" />
           
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto align-items-lg-center gap-lg-2 my-2 my-lg-0">
-              <Nav.Link href="/" className="text-dark fw-medium px-3 rounded-3 hover-pill">Home</Nav.Link>
-              <Nav.Link href="/projects" className="text-dark fw-medium px-3 rounded-3 hover-pill">Projects</Nav.Link>
-              <Nav.Link href="/reviews" className="text-dark fw-medium px-3 rounded-3 hover-pill">Reviews</Nav.Link>
+            <Nav className="ms-auto align-items-lg-center gap-lg-1 my-2 my-lg-0">
+              <Nav.Link href="/" className="text-dark fw-medium px-3 py-2 rounded-3 hover-pill d-inline-flex align-items-center">Home</Nav.Link>
+              <Nav.Link href="/projects" className="text-dark fw-medium px-3 py-2 rounded-3 hover-pill d-inline-flex align-items-center">Projects</Nav.Link>
+              <Nav.Link href="/reviews" className="text-dark fw-medium px-3 py-2 rounded-3 hover-pill d-inline-flex align-items-center">Reviews</Nav.Link>
+              <Nav.Link href="/about-us" className="text-dark fw-medium px-3 py-2 rounded-3 hover-pill d-inline-flex align-items-center">About</Nav.Link>
               
               {/* Contact CTA Button */}
               <Button 
                 href='/contact'
                 variant="dark" 
-                className="rounded-pill px-4 py-2 mt-2 mt-lg-0 ms-lg-2 fw-semibold border-0 shadow-sm w-100 w-lg-auto"
+                className="rounded-pill px-4 py-2 mt-2 mt-lg-0 ms-lg-2 fw-semibold border-0 shadow-sm w-100 w-lg-auto d-inline-flex align-items-center justify-content-center"
                 style={{
                   background: 'linear-gradient(135deg, #000000 0%, #333333 100%)',
                   fontSize: '0.9rem'
