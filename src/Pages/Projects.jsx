@@ -193,7 +193,7 @@ function Projects() {
                 variant="outline-dark" 
                 size="sm" 
                 className="rounded-pill px-3"
-                href="https://www.instagram.com" 
+                href="https://www.instagram.com/avisa.interiors_?stkn=dGtpeTY2a3hjM3Ft" 
                 target="_blank"
                 rel="noreferrer"
               >
