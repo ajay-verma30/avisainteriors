@@ -4,7 +4,12 @@ import { motion } from 'framer-motion';
 
 function Contact() {
   return (
-    <section className="py-5 bg-light min-vh-100 d-flex align-items-center">
+    <section className="py-5 bg-light min-vh-100 d-flex align-items-center"
+    style={{ 
+        marginTop: '-100px',
+        paddingTop: '6rem',
+        paddingBottom: '40px' 
+      }}>
       <Container>
         <Row className="gy-5 align-items-center">
           
