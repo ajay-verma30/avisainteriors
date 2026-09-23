@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  // Fix: Ignore external cross-origin script errors (like Instagram embeds)
   useEffect(() => {
     const handleGlobalError = (event) => {
       if (event.message === 'Script error.' || event.filename?.includes('instagram.com')) {
@@ -18,14 +17,12 @@ function Projects() {
     return () => window.removeEventListener('error', handleGlobalError);
   }, []);
 
-  // Instagram Embed SDK initialization
   useEffect(() => {
     const loadInstagramEmbeds = () => {
       if (window.instgrm) {
         try {
           window.instgrm.Embeds.process();
         } catch (e) {
-          // silent catch
         }
       } else {
         const script = document.createElement('script');
@@ -151,6 +148,11 @@ function Projects() {
         .gallery-img {
           height: 320px;
           object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover .gallery-img {
+          transform: scale(1.05);
         }
 
         .filter-btn {
@@ -177,11 +179,14 @@ function Projects() {
         paddingBottom: '40px' 
       }}>
         <Container>
-          {/* TOP SECTION: INSTAGRAM REELS SHOWCASE */}
           <section className="mb-5 pb-4 border-bottom">
-            <div className="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2"
+            >
               <div>
-        
                 <h2 className="fw-bold text-dark fs-3 mb-0">Behind The Scenes on Instagram</h2>
               </div>
               <Button 
@@ -194,12 +199,19 @@ function Projects() {
               >
                 Follow @avisa.interiors ➔
               </Button>
-            </div>
+            </motion.div>
 
-            {/* Scrollable Reels Track */}
+            {/* Scrollable Reels Track with Entry Animation */}
             <div className="reels-scroll-container">
-              {instagramReels.map((reel) => (
-                <div key={reel.id} className="reel-card">
+              {instagramReels.map((reel, index) => (
+                <motion.div 
+                  key={reel.id} 
+                  className="reel-card"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                >
                   <div className="instagram-wrapper">
                     <blockquote
                       className="instagram-media"
@@ -212,14 +224,18 @@ function Projects() {
                       </a>
                     </blockquote>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
 
-          {/* BOTTOM SECTION: FILTERABLE GALLERY */}
           <section>
-            <div className="text-center mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center mb-4"
+            >
               <span className="text-primary fw-semibold text-uppercase tracking-wider small d-block mb-1">
                 Portfolio
               </span>
@@ -227,16 +243,17 @@ function Projects() {
               
               <div className="d-flex justify-content-center gap-2 flex-wrap mt-4 mb-5">
                 {categories.map((cat) => (
-                  <button
+                  <motion.button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
+                    whileTap={{ scale: 0.95 }}
                     className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
                   >
                     {cat}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             <Row className="g-4">
               <AnimatePresence>
